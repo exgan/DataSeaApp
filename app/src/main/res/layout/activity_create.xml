@@ -4,15 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".сalendar.CalendarActivity">
+    tools:context=".CreateActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/edContent"
+        app:layout_constraintStart_toStartOf="@+id/edContent"
+        app:layout_constraintTop_toBottomOf="@+id/edContent" />
+
+    <EditText
+        android:id="@+id/edTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edContent"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="text|textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edTitle" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Заметка"
+        app:layout_constraintBottom_toTopOf="@+id/edTitle"
+        app:layout_constraintStart_toStartOf="@+id/edTitle" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Описание"
+        app:layout_constraintBottom_toTopOf="@+id/edContent"
+        app:layout_constraintStart_toStartOf="@+id/edContent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="313dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="36dp"
+        android:onClick="onClickSave"
+        android:text="Создать"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edContent"
+        app:layout_constraintStart_toStartOf="@+id/edContent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
