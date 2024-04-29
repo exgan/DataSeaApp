@@ -13,10 +13,18 @@
         android:theme="@style/Theme.DataSeaApp"
         tools:targetApi="31">
         <activity
+            android:name=".dataSea.MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>>
+        <activity
             android:name=".CreateActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

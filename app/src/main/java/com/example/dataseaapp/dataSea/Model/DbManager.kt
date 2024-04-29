@@ -1,4 +1,4 @@
-package com.example.dataseaapp.сreate.Model
+/*package com.example.dataseaapp.сreate.Model
 
 import android.content.ContentValues
 import android.content.Context
@@ -43,4 +43,4 @@ class DbManager(context: Context) {
     fun closeDb(){
         DbHelper.close()
     }
-}
+}*/

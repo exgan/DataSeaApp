@@ -6,26 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CreateActivity">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/edContent"
-        app:layout_constraintStart_toStartOf="@+id/edContent"
-        app:layout_constraintTop_toBottomOf="@+id/edContent" />
-
     <EditText
         android:id="@+id/edTitle"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
