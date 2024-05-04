@@ -32,8 +32,7 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, Db.DATABASE_NAME, nu
     fun getAllNotes(): List<Note>{
         val notesList = mutableListOf<Note>()
         val db = readableDatabase
-        //Db.TABLE_NAME возможно что-то не то
-        val query = "SELECT * FROM TABLE_NAME"
+        val query = "SELECT * FROM ${Db.TABLE_NAME}"
         val cursor = db.rawQuery(query, null)
 
         while (cursor.moveToNext()){
