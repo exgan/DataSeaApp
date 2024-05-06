@@ -13,7 +13,10 @@
         android:theme="@style/Theme.DataSeaApp"
         tools:targetApi="31">
         <activity
-            android:name=".dataSea.UpdateNoteActivity"
+            android:name=".dataSea.UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dataSea.UpdateActivity"
             android:exported="false" />
         <activity
             android:name=".dataSea.MainActivity"

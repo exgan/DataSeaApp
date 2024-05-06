@@ -47,4 +47,43 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, Db.DATABASE_NAME, nu
         db.close()
         return notesList
     }
+
+    fun updateNote(note: Note){
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(Db.COLUMN_TITLE, note.title)
+            put(Db.COLUMN_CONTENT, note.content)
+        }
+
+        // Переменная используется для идентификации строк, которые будут обнолены по идентификатору столбца
+        val whereClause = "${Db.COLUMN_ID} = ?"
+        // Инициализируем массив, содержащий аргумент, который являеся идентифик. примечания
+        val whereArgs = arrayOf(note.id.toString())
+        // Обновляем данные
+        db.update(Db.TABLE_NAME, values, whereClause, whereArgs)
+        db.close()
+    }
+
+    fun getNoteByID(noteId: Int): Note{
+        val db = readableDatabase
+        val query = "SELECT * FROM ${Db.TABLE_NAME} WHERE ${Db.COLUMN_ID} = $noteId"
+        val cursor = db.rawQuery(query, null)
+        cursor.moveToFirst()
+
+        val id = cursor.getInt(cursor.getColumnIndexOrThrow(Db.COLUMN_ID))
+        val title = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_TITLE))
+        val content = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_CONTENT))
+
+        cursor.close()
+        db.close()
+        return Note(id, title, content)
+    }
+
+    fun deleteNote(noteId: Int){
+        val db = writableDatabase
+        val whereClause = "${Db.COLUMN_ID} = ?"
+        val whereArgs = arrayOf(noteId.toString())
+        db.delete(Db.TABLE_NAME, whereClause, whereArgs)
+        db.close()
+    }
 }
