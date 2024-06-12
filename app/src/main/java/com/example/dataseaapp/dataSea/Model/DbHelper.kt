@@ -23,6 +23,7 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, Db.DATABASE_NAME, nu
         val values = ContentValues().apply {
             put(Db.COLUMN_TITLE, note.title)
             put(Db.COLUMN_CONTENT, note.content)
+            put(Db.COLUMN_TIME, note.time)
         }
         // Передаём в базу данных
         db.insert(Db.TABLE_NAME, null, values)
@@ -39,8 +40,9 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, Db.DATABASE_NAME, nu
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(Db.COLUMN_ID))
             val title = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_TITLE))
             val content = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_CONTENT))
+            val time = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_TIME))
 
-            val note = Note(id, title, content)
+            val note = Note(id, title, content, time)
             notesList.add(note)
         }
         cursor.close()
@@ -53,6 +55,7 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, Db.DATABASE_NAME, nu
         val values = ContentValues().apply {
             put(Db.COLUMN_TITLE, note.title)
             put(Db.COLUMN_CONTENT, note.content)
+            put(Db.COLUMN_TIME, note.time)
         }
 
         // Переменная используется для идентификации строк, которые будут обнолены по идентификатору столбца
@@ -73,10 +76,11 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, Db.DATABASE_NAME, nu
         val id = cursor.getInt(cursor.getColumnIndexOrThrow(Db.COLUMN_ID))
         val title = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_TITLE))
         val content = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_CONTENT))
+        val time = cursor.getString(cursor.getColumnIndexOrThrow(Db.COLUMN_TIME))
 
         cursor.close()
         db.close()
-        return Note(id, title, content)
+        return Note(id, title, content, time)
     }
 
     fun deleteNote(noteId: Int){

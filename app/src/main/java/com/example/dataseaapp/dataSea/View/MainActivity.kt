@@ -1,18 +1,18 @@
-package com.example.dataseaapp.dataSea
+package com.example.dataseaapp.dataSea.View
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dataseaapp.CreateActivity
 import com.example.dataseaapp.dataSea.Model.DbHelper
+import com.example.dataseaapp.dataSea.NotesAdapter
 import com.example.dataseaapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var db:DbHelper
-    private lateinit var notesAdapter:NotesAdapter
+    private lateinit var notesAdapter: NotesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dataSea.UpdateActivity">
+    tools:context=".dataSea.View.UpdateActivity">
 
     <EditText
         android:id="@+id/updateTitle"
@@ -50,6 +50,25 @@
         android:text="Описание"
         app:layout_constraintBottom_toTopOf="@+id/updateContent"
         app:layout_constraintStart_toStartOf="@+id/updateContent" />
+
+    <Button
+        android:id="@+id/updateTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Изменить время"
+        app:layout_constraintBottom_toTopOf="@+id/updateSaveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateContent" />
+
+    <TextView
+        android:id="@+id/tv_updateTextTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@tools:sample/date/ddmmyy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateTimeButton" />
 
     <Button
         android:id="@+id/updateSaveButton"
