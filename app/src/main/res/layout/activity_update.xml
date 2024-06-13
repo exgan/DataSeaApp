@@ -4,42 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dataSea.View.UpdateActivity">
+    tools:context=".dataSea.View.CreateActivity">
 
     <EditText
         android:id="@+id/updateTitle"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="375dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="69dp"
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
+        android:paddingBottom="21dp"
+        android:paddingTop="20dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        android:textColor="#000000"
+        android:background="@drawable/tv_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/updateSaveButton" />
 
     <EditText
         android:id="@+id/updateContent"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="61dp"
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
+        android:paddingBottom="27dp"
+        android:paddingTop="20dp"
         android:ems="10"
         android:gravity="top"
         android:inputType="text|textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#000000"
+        android:background="@drawable/tv_border"
+        app:layout_constraintEnd_toEndOf="@+id/updateTitle"
+        app:layout_constraintStart_toStartOf="@+id/updateTitle"
         app:layout_constraintTop_toBottomOf="@+id/updateTitle" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Заметка"
+        android:textSize="20sp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/updateTitle"
         app:layout_constraintStart_toStartOf="@+id/updateTitle" />
 
@@ -47,38 +58,61 @@
         android:id="@+id/textView3"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Описание"
+        android:textSize="20sp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/updateContent"
         app:layout_constraintStart_toStartOf="@+id/updateContent" />
 
     <Button
-        android:id="@+id/updateTimeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Изменить время"
-        app:layout_constraintBottom_toTopOf="@+id/updateSaveButton"
+        android:id="@+id/updateSaveButton"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="30dp"
+        android:onClick="onClickSave"
+        android:text="Готово"
+        android:textSize="20sp"
+        android:backgroundTint="#7FED64"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateContent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_updateTextTime"
-        android:layout_width="wrap_content"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        tools:text="@tools:sample/date/ddmmyy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateTimeButton" />
+        android:layout_marginTop="54dp"
+        android:paddingStart="14dp"
+        android:paddingBottom="11dp"
+        android:paddingTop="10dp"
+        android:textColor="#000000"
+        android:background="@drawable/tv_border"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/updateTitle"
+        app:layout_constraintTop_toBottomOf="@+id/updateContent"
+        tools:text="@tools:sample/date/ddmmyy" />
 
-    <Button
-        android:id="@+id/updateSaveButton"
-        android:layout_width="313dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="36dp"
-        android:onClick="onClickSave"
-        android:text="Изменить"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/updateContent"
-        app:layout_constraintStart_toStartOf="@+id/updateContent" />
+    <ImageView
+        android:id="@+id/updateTimeButton"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="0dp"
+        android:src="@drawable/baseline_edit_calendar_24"
+        android:text="Какое время?"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_updateTextTime"
+        app:layout_constraintEnd_toEndOf="@+id/updateTitle"
+        app:layout_constraintTop_toTopOf="@+id/tv_updateTextTime" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Дата"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/tv_updateTextTime"
+        app:layout_constraintStart_toStartOf="@+id/tv_updateTextTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
