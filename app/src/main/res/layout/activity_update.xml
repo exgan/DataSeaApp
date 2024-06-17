@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dataSea.View.CreateActivity">
+    tools:context=".dataSea.View.UpdateActivity"
+    android:background="@color/updateActivityBackgroundColor">
 
     <EditText
         android:id="@+id/updateTitle"
         android:layout_width="375dp"
-        android:layout_height="95dp"
+        android:layout_height="65dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="69dp"
@@ -28,7 +29,7 @@
     <EditText
         android:id="@+id/updateContent"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_marginTop="61dp"
         android:paddingStart="13dp"
         android:paddingEnd="13dp"
@@ -74,8 +75,22 @@
         android:onClick="onClickSave"
         android:text="Готово"
         android:textSize="20sp"
-        android:backgroundTint="#7FED64"
+        android:backgroundTint="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ButtonCancel"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="22dp"
+        android:onClick="onClickCancel"
+        android:text="Отменить"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -114,5 +129,121 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/tv_updateTextTime"
         app:layout_constraintStart_toStartOf="@+id/tv_updateTextTime" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_updateTextTime">
+
+        <ImageView
+            android:id="@+id/red_priority"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/red_shape"
+            android:src="@drawable/baseline_done_24"
+            android:layout_marginEnd="10dp"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="165dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Важно, срочно"
+
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="561dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/green_priority"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/green_shape"
+            android:layout_marginEnd="10dp"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="165dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Срочно, не важно"
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="561dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tv_updateTextTime">
+
+        <ImageView
+            android:id="@+id/yellow_priority"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/yellow_shape"
+            android:layout_marginEnd="10dp"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="165dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Важно, не срочно"
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="561dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <ImageView
+            android:id="@+id/gray_priority"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gray_shape"
+            android:layout_marginEnd="10dp"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="165dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Не срочно, не важно"
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="561dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

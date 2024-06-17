@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dataseaapp.dataSea.Model.DbHelper
-import com.example.dataseaapp.dataSea.NotesAdapter
 import com.example.dataseaapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

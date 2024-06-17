@@ -16,9 +16,6 @@
             android:name=".dataSea.View.UpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".dataSea.View.UpdateActivity"
-            android:exported="false" />
-        <activity
             android:name=".dataSea.View.MainActivity"
             android:exported="true">
             <intent-filter>

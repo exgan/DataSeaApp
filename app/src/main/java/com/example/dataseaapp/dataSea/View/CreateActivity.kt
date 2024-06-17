@@ -2,6 +2,7 @@ package com.example.dataseaapp.dataSea.View
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
@@ -10,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.dataseaapp.R
 import com.example.dataseaapp.dataSea.Model.DbHelper
 import com.example.dataseaapp.dataSea.Note
-import com.example.dataseaapp.dataSea.NotesAdapter
 import com.example.dataseaapp.databinding.ActivityCreateBinding
 import java.util.Calendar
 
@@ -31,8 +31,11 @@ class CreateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
     private var savedHour = 0
     private var savedMinute = 0
 
+    private var priority = "1"
+
     private lateinit var binding: ActivityCreateBinding
     private lateinit var db: DbHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +49,47 @@ class CreateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
             val title = binding.edTitle.text.toString()
             val content = binding.edContent.text.toString()
             val time = binding.tvTextTime.text.toString()
-            val note = Note(0, title, content, time)
+            val note = Note(0, title, content, time, priority)
             db.insertToDb(note)
             finish()
             Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.ButtonCancel.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.redPriority.setOnClickListener {
+            binding.redPriority.setImageResource(R.drawable.baseline_done_24)
+            binding.greenPriority.setImageResource(0)
+            binding.yellowPriority.setImageResource(0)
+            binding.grayPriority.setImageResource(0)
+            priority = "1"
+        }
+
+        binding.greenPriority.setOnClickListener {
+            binding.redPriority.setImageResource(0)
+            binding.greenPriority.setImageResource(R.drawable.baseline_done_24)
+            binding.yellowPriority.setImageResource(0)
+            binding.grayPriority.setImageResource(0)
+            priority = "2"
+        }
+
+        binding.yellowPriority.setOnClickListener {
+            binding.redPriority.setImageResource(0)
+            binding.greenPriority.setImageResource(0)
+            binding.yellowPriority.setImageResource(R.drawable.baseline_done_24)
+            binding.grayPriority.setImageResource(0)
+            priority = "3"
+        }
+
+        binding.grayPriority.setOnClickListener {
+            binding.redPriority.setImageResource(0)
+            binding.greenPriority.setImageResource(0)
+            binding.yellowPriority.setImageResource(0)
+            binding.grayPriority.setImageResource(R.drawable.baseline_done_24)
+            priority = "4"
         }
 
         pickDate()
