@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".dataSea.View.CreateActivity"
-    android:background="@color/createActivityBackgroundColor">
+    android:background="@color/ActivityBackgroundColor">
 
     <EditText
         android:id="@+id/edTitle"
@@ -114,7 +114,6 @@
         android:layout_height="38dp"
         android:layout_marginEnd="0dp"
         android:src="@drawable/baseline_edit_calendar_24"
-        android:text="Какое время?"
         app:layout_constraintBottom_toBottomOf="@+id/tv_textTime"
         app:layout_constraintEnd_toEndOf="@+id/edTitle"
         app:layout_constraintTop_toTopOf="@+id/tv_textTime" />

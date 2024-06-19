@@ -13,16 +13,24 @@
         android:theme="@style/Theme.DataSeaApp"
         tools:targetApi="31">
         <activity
-            android:name=".dataSea.View.UpdateActivity"
-            android:exported="false" />
+            android:name=".dataSea.View.SignupActivity"
+            android:exported="false">
+        </activity>
         <activity
-            android:name=".dataSea.View.MainActivity"
+            android:name=".dataSea.View.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".dataSea.View.UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dataSea.View.MainActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".dataSea.View.CreateActivity"

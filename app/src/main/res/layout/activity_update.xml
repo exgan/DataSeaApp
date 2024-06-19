@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".dataSea.View.UpdateActivity"
-    android:background="@color/updateActivityBackgroundColor">
+    android:background="@color/ActivityBackgroundColor">
 
     <EditText
         android:id="@+id/updateTitle"
