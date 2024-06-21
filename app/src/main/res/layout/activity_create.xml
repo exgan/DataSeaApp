@@ -19,6 +19,7 @@
         android:paddingBottom="21dp"
         android:paddingTop="20dp"
         android:ems="10"
+        android:hint="Придумайте название заметки"
         android:inputType="text"
         android:textColor="#000000"
         android:background="@drawable/tv_border"
@@ -37,6 +38,7 @@
         android:paddingTop="20dp"
         android:ems="10"
         android:gravity="top"
+        android:hint="Придумайте описание заметки"
         android:inputType="text|textMultiLine"
         android:textColor="#000000"
         android:background="@drawable/tv_border"
@@ -101,6 +103,7 @@
         android:paddingStart="14dp"
         android:paddingBottom="11dp"
         android:paddingTop="10dp"
+        android:hint="21.06.2024, 00:00"
         android:textColor="#000000"
         android:background="@drawable/tv_border"
         app:layout_constraintHorizontal_bias="0.501"
@@ -120,10 +123,10 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="100dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Дата"
+        android:text="Дата и время окончания"
         android:textSize="20sp"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/tv_textTime"
@@ -142,8 +145,8 @@
 
         <ImageView
             android:id="@+id/red_priority"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/red_shape"
             android:src="@drawable/baseline_done_24"
             android:layout_marginEnd="10dp"
@@ -154,7 +157,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Важно, срочно"
-
             tools:layout_editor_absoluteX="89dp"
             tools:layout_editor_absoluteY="561dp" />
 
@@ -173,8 +175,8 @@
 
         <ImageView
             android:id="@+id/green_priority"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/green_shape"
             android:layout_marginEnd="10dp"
             tools:layout_editor_absoluteX="66dp"
@@ -202,8 +204,8 @@
 
         <ImageView
             android:id="@+id/yellow_priority"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/yellow_shape"
             android:layout_marginEnd="10dp"
             tools:layout_editor_absoluteX="66dp"
@@ -219,7 +221,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="170dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -229,8 +231,8 @@
 
         <ImageView
             android:id="@+id/gray_priority"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/gray_shape"
             android:layout_marginEnd="10dp"
             tools:layout_editor_absoluteX="66dp"
@@ -244,5 +246,46 @@
             tools:layout_editor_absoluteY="561dp" />
 
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/alarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:text="Время для уведомления"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+
+    <TextView
+        android:id="@+id/tv_alarmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="00:00"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/alarmButtonSelectTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/alarmButtonSelectTime"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/white"
+        android:onClick="onClickCancel"
+        android:text="Выбрать время"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

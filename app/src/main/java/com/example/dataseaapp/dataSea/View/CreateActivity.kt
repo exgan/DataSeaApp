@@ -1,17 +1,27 @@
 package com.example.dataseaapp.dataSea.View
 
+import android.app.AlarmManager
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.getSystemService
 import com.example.dataseaapp.R
+import com.example.dataseaapp.dataSea.AlarmReceiver
 import com.example.dataseaapp.dataSea.Model.DbHelper
 import com.example.dataseaapp.dataSea.Note
 import com.example.dataseaapp.databinding.ActivityCreateBinding
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import java.util.Calendar
 
 
@@ -33,6 +43,11 @@ class CreateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
 
     private var priority = "1"
 
+    private lateinit var picker: MaterialTimePicker
+    private lateinit var alarmManager: AlarmManager
+    private lateinit var pendingIntent: PendingIntent
+    private lateinit var calendar: Calendar
+
     private lateinit var binding: ActivityCreateBinding
     private lateinit var db: DbHelper
 
@@ -41,6 +56,8 @@ class CreateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
         super.onCreate(savedInstanceState)
         binding = ActivityCreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        createNotificationChannel()
 
         db = DbHelper(this)
 
@@ -93,6 +110,50 @@ class CreateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
         }
 
         pickDate()
+
+        binding.alarmButtonSelectTime.setOnClickListener {
+            showTimePicker()
+        }
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name: CharSequence = "TaskMaster"
+            val description = "Канал для уведомлений"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("TaskMaster", name, importance)
+            channel.description = description
+            val notificationManager = getSystemService(
+                NotificationManager::class.java
+            )
+
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun showTimePicker() {
+        picker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setHour(12)
+            .setMinute(0)
+            .setTitleText("Выберете время для уведомления")
+            .build()
+
+        picker.show(supportFragmentManager, "TaskMaster")
+
+        picker.addOnPositiveButtonClickListener {
+            if (hour > 12){
+                binding.tvAlarmTime.text = "${picker.hour - 12} :  ${picker.minute}"
+            } else {
+                binding.tvAlarmTime.text = "${picker.hour} : ${picker.minute}"
+            }
+
+            val cal = Calendar.getInstance()
+            cal[Calendar.HOUR_OF_DAY] = picker.hour
+            cal[Calendar.MINUTE] = picker.minute
+            cal[Calendar.SECOND] = 0
+            cal[Calendar.MILLISECOND] = 0
+        }
     }
 
     private fun getDateTimeCalendar() {
@@ -126,15 +187,13 @@ class CreateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
         savedHour = hourOfDay
         savedMinute = minute
         if ((minute in numbersForMinutes) and (hourOfDay in numbersForHours)) {
-            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear , 0$savedHour:0$savedMinute"
+            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear, 0$savedHour:0$savedMinute"
         } else if (minute in numbersForMinutes) {
-            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear , $savedHour:0$savedMinute"
+            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear, $savedHour:0$savedMinute"
         } else if (hourOfDay in numbersForHours) {
-            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear , 0$savedHour:$savedMinute"
+            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear, 0$savedHour:$savedMinute"
         } else {
-            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear , $savedHour:$savedMinute"
+            binding.tvTextTime.text = "$savedDay.$savedMonth.$savedYear, $savedHour:$savedMinute"
         }
-
-
     }
 }

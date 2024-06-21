@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dataSea.View.LoginActivity"
+    android:background="@color/ActivityBackgroundColor">
+
+    <ImageView
+        android:id="@+id/welcomeImageView"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher_logo"
+        app:layout_constraintBottom_toTopOf="@+id/welcomText_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcomText_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Добро пожаловать!"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/welcomText_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/welcomText_2"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="250dp"
+        android:text="Организуйте свою жизнь с легкостью. Наше приложение создано, чтобы помочь вам в каждом шаге вашего пути к продуктивности. Добавляйте задачи, устанавливайте приоритеты и эффективно управляйте своим временем."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/welcomeEnterButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/welcomeEnterButton"
+        android:layout_width="390dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/green"
+        android:text="Войти"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/welcomeRegUpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/welcomeRegUpButton"
+        android:layout_width="390dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/white"
+        android:text="Зарегистрироваться"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

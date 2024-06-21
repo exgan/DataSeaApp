@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DataSeaApp"
         tools:targetApi="31">
+        <receiver
+            android:name=".dataSea.AlarmReceiver">
+        </receiver>
+
+        <activity
+            android:name=".dataSea.View.WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".dataSea.View.SignupActivity"
             android:exported="false">
@@ -19,11 +33,6 @@
         <activity
             android:name=".dataSea.View.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".dataSea.View.UpdateActivity"
