@@ -247,24 +247,11 @@
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/alarmText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="15dp"
-        android:text="Время для уведомления"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-
-
     <TextView
         android:id="@+id/tv_alarmTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="8dp"
         android:text="00:00"
         android:textAlignment="center"
@@ -272,16 +259,17 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/alarmButtonSelectTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_textTime" />
 
     <Button
         android:id="@+id/alarmButtonSelectTime"
-        android:layout_width="250dp"
+        android:layout_width="330dp"
         android:layout_height="40dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/white"
         android:onClick="onClickCancel"
-        android:text="Выбрать время"
+        android:text="Выбрать время для уведомления"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"

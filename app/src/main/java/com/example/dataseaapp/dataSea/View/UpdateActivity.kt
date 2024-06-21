@@ -1,8 +1,11 @@
 package com.example.dataseaapp.dataSea.View
 
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
@@ -12,6 +15,8 @@ import com.example.dataseaapp.R
 import com.example.dataseaapp.dataSea.Model.DbHelper
 import com.example.dataseaapp.dataSea.Note
 import com.example.dataseaapp.databinding.ActivityUpdateBinding
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import java.util.Calendar
 
 class UpdateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -32,6 +37,8 @@ class UpdateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
 
     private var priority = "1"
 
+    private lateinit var picker: MaterialTimePicker
+
     private lateinit var binding: ActivityUpdateBinding
     private lateinit var db: DbHelper
     private var noteId: Int = -1
@@ -40,6 +47,7 @@ class UpdateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
         super.onCreate(savedInstanceState)
         binding = ActivityUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        createNotificationChannel()
 
         db = DbHelper(this)
 
@@ -102,6 +110,50 @@ class UpdateActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
         }
 
         pickDate()
+
+        binding.alarmUpdateButtonSelectTime.setOnClickListener {
+            showTimePicker()
+        }
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name: CharSequence = "TaskMaster"
+            val description = "Канал для уведомлений"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("TaskMaster", name, importance)
+            channel.description = description
+            val notificationManager = getSystemService(
+                NotificationManager::class.java
+            )
+
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun showTimePicker() {
+        picker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setHour(12)
+            .setMinute(0)
+            .setTitleText("Выберете время для уведомления")
+            .build()
+
+        picker.show(supportFragmentManager, "TaskMaster")
+
+        picker.addOnPositiveButtonClickListener {
+            if (hour > 12){
+                binding.tvUpdateAlarmTime.text = "${picker.hour - 12} :  ${picker.minute}"
+            } else {
+                binding.tvUpdateAlarmTime.text = "${picker.hour} : ${picker.minute}"
+            }
+
+            val cal = Calendar.getInstance()
+            cal[Calendar.HOUR_OF_DAY] = picker.hour
+            cal[Calendar.MINUTE] = picker.minute
+            cal[Calendar.SECOND] = 0
+            cal[Calendar.MILLISECOND] = 0
+        }
     }
 
     private fun getDateTimeCalendar() {
